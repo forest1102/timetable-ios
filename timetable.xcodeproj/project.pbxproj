@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E6F8D2267684AED920B0F5B /* Pods_timetable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08774DE77FE4DFD049A79C6 /* Pods_timetable.framework */; };
+		7AA84E5C1E9B91B30025499E /* TimeTableEachDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA84E5B1E9B91B30025499E /* TimeTableEachDayViewController.swift */; };
 		7AC182801E9293570085E7CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC1827F1E9293570085E7CF /* AppDelegate.swift */; };
 		7AC182821E9293570085E7CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC182811E9293570085E7CF /* ViewController.swift */; };
 		7AC182851E9293570085E7CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AC182831E9293570085E7CF /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		7AC182951E9293570085E7CF /* timetableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC182941E9293570085E7CF /* timetableTests.swift */; };
 		7AC182A01E9293570085E7CF /* timetableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC1829F1E9293570085E7CF /* timetableUITests.swift */; };
 		7AFB498C1E95394A000EC38D /* timeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFB498B1E95394A000EC38D /* timeTableViewCell.swift */; };
-		7AFB498E1E967405000EC38D /* timetablesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFB498D1E967405000EC38D /* timetablesTableViewController.swift */; };
 		7AFB49901E967495000EC38D /* timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFB498F1E967495000EC38D /* timetable.swift */; };
 		7DC0E4695D71DB2CB8B73736 /* Pods_timetableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DF1D1C787BF3B47885B621 /* Pods_timetableTests.framework */; };
 		958BA8BBD91136C862B2A689 /* Pods_timetableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C464314942A87157D95CBFE1 /* Pods_timetableUITests.framework */; };
@@ -43,6 +43,7 @@
 		21F94FF3C4D2BEEF8A8790D2 /* Pods-timetableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timetableTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-timetableTests/Pods-timetableTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F9EAB2B21AD894F692B3549 /* Pods-timetableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timetableUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-timetableUITests/Pods-timetableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		73A88E9CC88C1BE3F0E42701 /* Pods-timetable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timetable.release.xcconfig"; path = "Pods/Target Support Files/Pods-timetable/Pods-timetable.release.xcconfig"; sourceTree = "<group>"; };
+		7AA84E5B1E9B91B30025499E /* TimeTableEachDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableEachDayViewController.swift; sourceTree = "<group>"; };
 		7AC1827C1E9293570085E7CF /* timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC1827F1E9293570085E7CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AC182811E9293570085E7CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		7AC1829F1E9293570085E7CF /* timetableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timetableUITests.swift; sourceTree = "<group>"; };
 		7AC182A11E9293570085E7CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AFB498B1E95394A000EC38D /* timeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeTableViewCell.swift; sourceTree = "<group>"; };
-		7AFB498D1E967405000EC38D /* timetablesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timetablesTableViewController.swift; sourceTree = "<group>"; };
 		7AFB498F1E967495000EC38D /* timetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timetable.swift; sourceTree = "<group>"; };
 		982AA089738D219E88E754D1 /* Pods-timetableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timetableTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-timetableTests/Pods-timetableTests.release.xcconfig"; sourceTree = "<group>"; };
 		9FD6BB1E2170DB5DE3E4633B /* Pods-timetable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timetable.debug.xcconfig"; path = "Pods/Target Support Files/Pods-timetable/Pods-timetable.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,10 +133,9 @@
 				7AC1827F1E9293570085E7CF /* AppDelegate.swift */,
 				7AC182811E9293570085E7CF /* ViewController.swift */,
 				7AC182831E9293570085E7CF /* Main.storyboard */,
-				7AFB498D1E967405000EC38D /* timetablesTableViewController.swift */,
+				7AA84E5B1E9B91B30025499E /* TimeTableEachDayViewController.swift */,
 				7AFB498B1E95394A000EC38D /* timeTableViewCell.swift */,
 				7AC182861E9293570085E7CF /* Assets.xcassets */,
-				7AC182881E9293570085E7CF /* LaunchScreen.storyboard */,
 				7AC1828B1E9293570085E7CF /* Info.plist */,
 				7AFB498F1E967495000EC38D /* timetable.swift */,
 			);
@@ -146,6 +145,7 @@
 		7AC182931E9293570085E7CF /* timetableTests */ = {
 			isa = PBXGroup;
 			children = (
+				7AC182881E9293570085E7CF /* LaunchScreen.storyboard */,
 				7AC182941E9293570085E7CF /* timetableTests.swift */,
 				7AC182961E9293570085E7CF /* Info.plist */,
 			);
@@ -457,8 +457,8 @@
 			files = (
 				7AFB498C1E95394A000EC38D /* timeTableViewCell.swift in Sources */,
 				7AC182821E9293570085E7CF /* ViewController.swift in Sources */,
+				7AA84E5C1E9B91B30025499E /* TimeTableEachDayViewController.swift in Sources */,
 				7AC182801E9293570085E7CF /* AppDelegate.swift in Sources */,
-				7AFB498E1E967405000EC38D /* timetablesTableViewController.swift in Sources */,
 				7AFB49901E967495000EC38D /* timetable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +509,7 @@
 				7AC182891E9293570085E7CF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ../timetable;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
