@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import ReSwift
 import os.log
-class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UITabBarDelegate {
+class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UITabBarDelegate,StoreSubscriber {
 
     @IBOutlet weak var dayTabBar: UITabBar!
     @IBOutlet weak var EachDayTimeTable: UITableView!
     var timetables=[Timetable]()
     var curDayIndex:Int=0
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainStore.subscribe(self){
+            state in state.tabBar
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSampleTimetables()
@@ -25,6 +31,16 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        mainStore.unsubscribe(self)
+    }
+    
+    // MARK: State Action
+    func newState(state: TabBarState) {
+        print("\(state.tabNames[state.tabIndex]) is selected")
     }
     
     // MARK: - Table view data source
@@ -55,9 +71,7 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
     // MARK: - tab bar delegate
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print("selected \(item.tag)")
-        curDayIndex=item.tag
-        
+        mainStore.dispatch(TabBarState.UpdateTabIndex(tabIndex: item.tag))
     }
     
 
