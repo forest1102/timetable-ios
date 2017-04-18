@@ -59,11 +59,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Yv-7M-w7L">
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Yv-7M-w7L" customClass="DayTabBar" customModule="timetable" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="JD0-UV-z3a"/>
+                                    <tabBarItem title="aaaa" id="JD0-UV-z3a"/>
                                     <tabBarItem tag="1" systemItem="more" id="WwZ-NJ-5c8"/>
                                 </items>
                             </tabBar>
@@ -79,7 +79,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6ib-Mx-i16">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HD-6K-Ie7">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -91,16 +91,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vMe-Dz-u4P">
-                                                            <rect key="frame" x="0.0" y="30" width="375" height="13.5"/>
+                                                            <rect key="frame" x="0.0" y="30" width="375" height="13"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTA-S6-qP0">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="13.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="13"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVu-Cg-7d1">
-                                                                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="13.5"/>
+                                                                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="13"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -148,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6A-Gr-H1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062" y="84"/>
+            <point key="canvasLocation" x="3020" y="84"/>
         </scene>
         <!--Item-->
         <scene sceneID="M2P-df-Hlp">

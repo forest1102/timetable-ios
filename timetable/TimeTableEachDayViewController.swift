@@ -7,25 +7,31 @@
 //
 
 import UIKit
-import ReSwift
+import RxCocoa
+import RxSwift
 import os.log
-class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UITabBarDelegate,StoreSubscriber {
-
-    @IBOutlet weak var dayTabBar: UITabBar!
+class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    // MARK: Properties
+    @IBOutlet weak var dayTabBar: DayTabBar!
     @IBOutlet weak var EachDayTimeTable: UITableView!
     var timetables=[Timetable]()
-    var curDayIndex:Int=0
+    private let disposeBag=DisposeBag()
+    // MARK: Override methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mainStore.subscribe(self){
-            state in state.tabBar
-        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSampleTimetables()
+//        print(self.view.frame)
+        UITabBarItem.appearance(whenContainedInInstancesOf: [DayTabBar.self]).setTitleTextAttributes(
+            [
+                NSFontAttributeName:UIFont.systemFont(ofSize: 15),
+                NSForegroundColorAttributeName:UIColor(red: 0.55, green: 0.55, blue: 0.55, alpha: 1.0)
+            ], for: UIControlState.normal)
+        UITabBarItem.appearance(whenContainedInInstancesOf: [DayTabBar.self]).titlePositionAdjustment=UIOffsetMake(0, -9)
         EachDayTimeTable.register(UITableViewCell.self, forCellReuseIdentifier: "timeTableViewCell")
-        dayTabBar.delegate=self
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,16 +41,11 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        mainStore.unsubscribe(self)
+//        mainStore.unsubscribe(dayTabBar.self)
     }
     
-    // MARK: State Action
-    func newState(state: TabBarState) {
-        print("\(state.tabNames[state.tabIndex]) is selected")
-    }
     
     // MARK: - Table view data source
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -67,13 +68,6 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
         cell.placeLabel.text=t.place
         return cell
     }
-    
-    // MARK: - tab bar delegate
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        mainStore.dispatch(TabBarState.UpdateTabIndex(tabIndex: item.tag))
-    }
-    
 
     /*
     // MARK: - Navigation
@@ -86,6 +80,9 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
     */
     
     // MARK: Private Methods
+    private func setup(){
+        
+    }
     private func loadSampleTimetables(){
         guard let timetable1=Timetable(subject: "Math",teacher:"John",place:"here") else {
             fatalError("Unable to instantiate timetable1")
