@@ -16,6 +16,8 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
     @IBOutlet weak var EachDayTimeTable: UITableView!
     var timetables=[Timetable]()
     private let disposeBag=DisposeBag()
+    
+    
     // MARK: Override methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,16 +26,13 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSampleTimetables()
-//        print(self.view.frame)
-        UITabBarItem.appearance(whenContainedInInstancesOf: [DayTabBar.self]).setTitleTextAttributes(
-            [
-                NSFontAttributeName:UIFont.systemFont(ofSize: 15),
-                NSForegroundColorAttributeName:UIColor(red: 0.55, green: 0.55, blue: 0.55, alpha: 1.0)
-            ], for: UIControlState.normal)
-        UITabBarItem.appearance(whenContainedInInstancesOf: [DayTabBar.self]).titlePositionAdjustment=UIOffsetMake(0, -9)
         EachDayTimeTable.register(UITableViewCell.self, forCellReuseIdentifier: "timeTableViewCell")
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        dayTabBar.setUp()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -81,7 +80,7 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
     
     // MARK: Private Methods
     private func setup(){
-        
+
     }
     private func loadSampleTimetables(){
         guard let timetable1=Timetable(subject: "Math",teacher:"John",place:"here") else {
