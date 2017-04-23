@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E6F8D2267684AED920B0F5B /* Pods_timetable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08774DE77FE4DFD049A79C6 /* Pods_timetable.framework */; };
 		7A367CB51EA1051F00C84742 /* DayTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A367CB41EA1051F00C84742 /* DayTabBar.swift */; };
+		7A7191E01EAC812F00CB829D /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7191DF1EAC812F00CB829D /* FocusView.swift */; };
 		7AA84E5C1E9B91B30025499E /* TimeTableEachDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA84E5B1E9B91B30025499E /* TimeTableEachDayViewController.swift */; };
 		7AC182801E9293570085E7CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC1827F1E9293570085E7CF /* AppDelegate.swift */; };
 		7AC182821E9293570085E7CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC182811E9293570085E7CF /* ViewController.swift */; };
@@ -20,7 +21,6 @@
 		7AC87ACF1EA4C4FC00A5B3C9 /* timetableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC87ACE1EA4C4FC00A5B3C9 /* timetableData.swift */; };
 		7AC87AD21EA4C6E700A5B3C9 /* WeekOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC87AD11EA4C6E700A5B3C9 /* WeekOfDay.swift */; };
 		7AC87AD41EA7924300A5B3C9 /* UIColorHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC87AD31EA7924200A5B3C9 /* UIColorHexExtension.swift */; };
-		7AC87AD61EA8D67F00A5B3C9 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC87AD51EA8D67F00A5B3C9 /* FocusView.swift */; };
 		7AC87AD81EA8DCA600A5B3C9 /* TabBarSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC87AD71EA8DCA600A5B3C9 /* TabBarSetting.swift */; };
 		7AFB498C1E95394A000EC38D /* timeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFB498B1E95394A000EC38D /* timeTableViewCell.swift */; };
 		7AFB49901E967495000EC38D /* timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFB498F1E967495000EC38D /* timetable.swift */; };
@@ -50,6 +50,7 @@
 		6F9EAB2B21AD894F692B3549 /* Pods-timetableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timetableUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-timetableUITests/Pods-timetableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		73A88E9CC88C1BE3F0E42701 /* Pods-timetable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timetable.release.xcconfig"; path = "Pods/Target Support Files/Pods-timetable/Pods-timetable.release.xcconfig"; sourceTree = "<group>"; };
 		7A367CB41EA1051F00C84742 /* DayTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTabBar.swift; sourceTree = "<group>"; };
+		7A7191DF1EAC812F00CB829D /* FocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
 		7AA84E5B1E9B91B30025499E /* TimeTableEachDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableEachDayViewController.swift; sourceTree = "<group>"; };
 		7AC1827C1E9293570085E7CF /* timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC1827F1E9293570085E7CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		7AC87ACE1EA4C4FC00A5B3C9 /* timetableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timetableData.swift; sourceTree = "<group>"; };
 		7AC87AD11EA4C6E700A5B3C9 /* WeekOfDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekOfDay.swift; sourceTree = "<group>"; };
 		7AC87AD31EA7924200A5B3C9 /* UIColorHexExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorHexExtension.swift; sourceTree = "<group>"; };
-		7AC87AD51EA8D67F00A5B3C9 /* FocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
 		7AC87AD71EA8DCA600A5B3C9 /* TabBarSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarSetting.swift; sourceTree = "<group>"; };
 		7AFB498B1E95394A000EC38D /* timeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeTableViewCell.swift; sourceTree = "<group>"; };
 		7AFB498F1E967495000EC38D /* timetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timetable.swift; sourceTree = "<group>"; };
@@ -144,9 +144,9 @@
 			children = (
 				7AC1828B1E9293570085E7CF /* Info.plist */,
 				7AC1827F1E9293570085E7CF /* AppDelegate.swift */,
+				7A7191DF1EAC812F00CB829D /* FocusView.swift */,
 				7AC87AD31EA7924200A5B3C9 /* UIColorHexExtension.swift */,
 				7A367CB41EA1051F00C84742 /* DayTabBar.swift */,
-				7AC87AD51EA8D67F00A5B3C9 /* FocusView.swift */,
 				7AFB498F1E967495000EC38D /* timetable.swift */,
 				7AA84E5B1E9B91B30025499E /* TimeTableEachDayViewController.swift */,
 				7AFB498B1E95394A000EC38D /* timeTableViewCell.swift */,
@@ -483,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AFB498C1E95394A000EC38D /* timeTableViewCell.swift in Sources */,
+				7A7191E01EAC812F00CB829D /* FocusView.swift in Sources */,
 				7AC182821E9293570085E7CF /* ViewController.swift in Sources */,
 				7AC87ACF1EA4C4FC00A5B3C9 /* timetableData.swift in Sources */,
 				7AC87AD21EA4C6E700A5B3C9 /* WeekOfDay.swift in Sources */,
@@ -492,7 +493,6 @@
 				7AC87AD41EA7924300A5B3C9 /* UIColorHexExtension.swift in Sources */,
 				7AFB49901E967495000EC38D /* timetable.swift in Sources */,
 				7A367CB51EA1051F00C84742 /* DayTabBar.swift in Sources */,
-				7AC87AD61EA8D67F00A5B3C9 /* FocusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

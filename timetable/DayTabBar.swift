@@ -14,6 +14,7 @@ import os.log
 class DayTabBar: UITabBar {
     private let disposeBag=DisposeBag()
     private let tabBarLabelSize:CGFloat=15.0
+    var focusView=FocusView(frame:CGRect(x: 0.0, y: 0.0, width: 0, height: 0))
     // MARK: Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,12 +41,9 @@ class DayTabBar: UITabBar {
     }
     
     func setUp(){
-        let focusView=FocusView(frame:CGRect(origin:CGPoint(x:0.0,y:0.0),
-                                             size: CGSize(width: self.bounds.width/5.0, height: self.bounds.height)))
         
-        focusView.padding=UIEdgeInsets(top: 9, left: 0, bottom: 0, right: 0)
-        focusView.font=UIFont.systemFont(ofSize: tabBarLabelSize)
-        
+        self.focusView.padding=UIEdgeInsets(top: 9, left: 0, bottom: 0, right: 0)
+        self.focusView.font=UIFont.systemFont(ofSize: tabBarLabelSize)
         
         Observable.combineLatest(
             WeekOfDay.sharedInstance.WeekListObservable,
@@ -53,7 +51,7 @@ class DayTabBar: UITabBar {
             {(weekList,selectedTag) in weekList[selectedTag.rawValue]}
             .subscribe(
                 onNext:{
-                    focusView.text=$0
+                    self.focusView.text=$0
             },onError:{print($0)})
             .addDisposableTo(disposeBag)
         
@@ -65,6 +63,9 @@ class DayTabBar: UITabBar {
                 for (i,weekName) in weekList.enumerated(){
                     self!.items!.append(UITabBarItem(title: weekName, image: nil, tag: i))
                     }
+                    self!.focusView.frame=CGRect(x:0.0, y:0.0,
+                                                 width:self!.bounds.width/CGFloat(weekList.count),
+                                                 height: self!.bounds.height)
             },
                 onError:{print($0)})
             .addDisposableTo(disposeBag)
@@ -73,9 +74,9 @@ class DayTabBar: UITabBar {
             .map{WeekOfDay.Week(rawValue:$0.tag)!}
             .subscribe(onNext:{
                 cur in
-                focusView.text=""
+                self.focusView.text=""
                 UIView.animate(withDuration: 0.1,delay:0.0,options:.curveEaseOut, animations: {
-                    focusView.center.x=focusView.bounds.width*(0.5+CGFloat(cur.rawValue))
+                    self.focusView.center.x=self.focusView.bounds.width*(0.5+CGFloat(cur.rawValue))
                 }, completion: {
                     _ in
                     WeekOfDay.sharedInstance.curSelectedItem.value=cur

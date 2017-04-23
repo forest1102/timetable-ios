@@ -1,13 +1,15 @@
 //
-//  FocusView.swift
+//  focusView.swift
 //  timetable
 //
-//  Created by 森田一世 on 2017/04/20.
+//  Created by 森田一世 on 2017/04/23.
 //  Copyright © 2017年 森田一世. All rights reserved.
 //
 
 import UIKit
+import RxCocoa
 import RxSwift
+import os.log
 class FocusView: UILabel {
     var padding: UIEdgeInsets=UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     let disposeBag=DisposeBag()
@@ -22,7 +24,7 @@ class FocusView: UILabel {
     
     // MARK: Setup methods
     private func setup(){
-        roundTop()
+//        roundTop()
         self.textAlignment = .center
         TabBarSetting.sharedInstance.selectedTextColorVariable.asObservable()
             .subscribe(onNext:{
@@ -44,6 +46,12 @@ class FocusView: UILabel {
         self.layer.mask=maskLayer
     }
     
+    // MARK: override properties
+    override var frame: CGRect{
+        didSet{
+            roundTop()
+        }
+    }
     override func drawText(in rect: CGRect) {
         let newRect = UIEdgeInsetsInsetRect(rect, padding)
         super.drawText(in: newRect)
@@ -54,12 +62,6 @@ class FocusView: UILabel {
         contentSize.height += padding.top + padding.bottom
         contentSize.width += padding.left + padding.right
         return contentSize
-    }
-    
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let size=super.sizeThatFits(size)
-        print(size)
-        return size
     }
     /*
     // Only override draw() if you perform custom drawing.
