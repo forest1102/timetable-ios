@@ -13,10 +13,12 @@ class timeTableViewCell: UITableViewCell {
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var teacherLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
-
+    static let identifier="TimetableViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
+        self.selectionStyle = .none
         subjectLabel.text=""
         teacherLabel.text=""
         placeLabel.text=""

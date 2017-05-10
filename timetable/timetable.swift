@@ -8,15 +8,15 @@
 
 import Foundation
 
-class Timetable{
+struct Timetable{
     // MARK: Properties
-    var subject:String?
-    var teacher:String?
-    var place: String?
-    // MARK: Initialization
-    init?(subject:String?,teacher: String?,place:String?) {
+    var subject:String=""
+    var teacher:String=""
+    var place: String=""
+    
+    init(subject:String="",teacher:String="",place:String="") {
         self.subject=subject
-        self.teacher=teacher
         self.place=place
+        self.teacher=teacher
     }
 }

@@ -25,6 +25,7 @@ class DayTabBar: UITabBar {
         super.init(coder: coder)!
         customizeBar()
     }
+    
     // MARK: Private Properties
     private func customizeBar(){
         UITabBarItem.appearance(whenContainedInInstancesOf: [DayTabBar.self]).setTitleTextAttributes(

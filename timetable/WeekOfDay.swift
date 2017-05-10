@@ -16,6 +16,7 @@ class WeekOfDay{
     // MARK: Enum
     enum Week:Int {
         case Mon=0,Tue,Wed,Thu,Fri,Sat,Sun
+        static let Weeks:[WeekOfDay.Week]=[.Mon,.Tue,.Wed,.Thu,.Fri,.Sat,.Sun]
     }
     enum ShowKind: Int{
         case Short,Initial,Japanese

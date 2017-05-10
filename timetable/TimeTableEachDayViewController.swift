@@ -10,11 +10,12 @@ import UIKit
 import RxCocoa
 import RxSwift
 import os.log
-class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class TimeTableEachDayViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var dayTabBar: DayTabBar!
     @IBOutlet weak var EachDayTimeTable: UITableView!
     var timetables=[Timetable]()
+//    var selectedTimetable:Timetable? = nil
     private let disposeBag=DisposeBag()
     
     
@@ -25,8 +26,8 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         loadSampleTimetables()
-        EachDayTimeTable.register(UITableViewCell.self, forCellReuseIdentifier: "timeTableViewCell")
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,56 +41,76 @@ class TimeTableEachDayViewController: UIViewController,UITableViewDataSource,UIT
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-//        mainStore.unsubscribe(dayTabBar.self)
     }
     
-    
-    // MARK: - Table view data source
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return timetables.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimetableViewCell", for: indexPath) as? timeTableViewCell else{
-            fatalError("The dequeued cell is not an instance of timeTableViewCell.")
-        }
-        // Configure the cell...
-        let t=timetables[indexPath.row]
-        cell.subjectLabel.text=t.subject
-        cell.teacherLabel.text=t.teacher
-        cell.placeLabel.text=t.place
-        return cell
-    }
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        switch (segue.identifier ?? "") {
+        case "ShowDetail":
+//            print(self.selectedTimetable ?? Timetable())
+            
+            guard let secondVC=(segue.destination as? DetailTimetableViewController) else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let indexPath=sender as? IndexPath else {
+                fatalError("Unexecpeted indexPath: \(String(describing: sender))")
+            }
+            let selectedTimetable=self.timetables[indexPath.row]
+            secondVC.timetable=selectedTimetable
+        default: break
+            
+        }
     }
-    */
+    
+    // MARK: Actions
+    @IBAction func backToTop(segue: UIStoryboardSegue) {
+        if let sourceViewController = segue.source as? DetailTimetableViewController,
+            let timetable = sourceViewController.timetable {
+            
+            if let selectedIndexPath = EachDayTimeTable.indexPathForSelectedRow {
+                // Update an existing meal.
+                WeekOfDay.sharedInstance.curSelectedItem.asObservable()
+                    .subscribe(onNext:{
+                        TimetableData.sharedInstance.wholeTimetablesVariable.value[$0]?[selectedIndexPath.row]=timetable
+                    }).dispose()
+            }
+        }
+    }
+ 
     
     // MARK: Private Methods
     private func setup(){
-
+        
+        TimetableData.sharedInstance.curTimetableDay
+            .bindTo(
+                self.EachDayTimeTable.rx
+                    .items(cellIdentifier: "TimetableViewCell", cellType: timeTableViewCell.self)){
+                    (row, elem, cell)->Void in
+                    cell.placeLabel.text=elem.place
+                    cell.subjectLabel.text=elem.subject
+                    cell.teacherLabel.text=elem.teacher
+            }
+            .addDisposableTo(disposeBag)
+        TimetableData.sharedInstance.curTimetableDay
+            .subscribe(onNext:{
+                [weak self] in
+                self?.timetables=$0
+            })
+            .addDisposableTo(disposeBag)
+        self.EachDayTimeTable.rx.itemSelected.subscribe(onNext:{
+            [weak self] index in
+            self?.performSegue(withIdentifier: "ShowDetail", sender: index)
+        })
+        
     }
+    
     private func loadSampleTimetables(){
-        guard let timetable1=Timetable(subject: "Math",teacher:"John",place:"here") else {
-            fatalError("Unable to instantiate timetable1")
-        }
-        guard let timetable2=Timetable(subject: "Physics",teacher:"Moris",place:"there") else {
-            fatalError("Unable to instantiate timetable2")
-        }
-        timetables+=[timetable1,timetable2]
+        let timetable1:Timetable=Timetable(subject: "Math",teacher:"John",place:"here")
+        let timetable2:Timetable=Timetable(subject: "Physics",teacher:"Moris",place:"there")
+        TimetableData.sharedInstance.wholeTimetablesVariable.value[.Mon]?[0...1]=[timetable1,timetable2]
     }
 
 }
