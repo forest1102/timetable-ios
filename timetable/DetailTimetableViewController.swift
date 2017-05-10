@@ -11,8 +11,12 @@ import RxSwift
 import RxCocoa
 import Eureka
 import  os.log
-class DetailTimetableViewController: UITableViewController {
+class DetailTimetableViewController: FormViewController {
     var timetable:Timetable?
+    
+    private enum SubjectInfoType:String{
+        case Subject,Teacher,Place
+    }
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
@@ -33,9 +37,26 @@ class DetailTimetableViewController: UITableViewController {
     
     private func setup(){
 //        print(timetable?.place ?? "")
-        if let timetable=timetable{
-            print(timetable)
+        form +++ Section("教科情報")
+            <<< TextRow(){
+                $0.title="教科名"
+                $0.tag=SubjectInfoType.Subject.rawValue
+                $0.placeholder="subject's name"
+                $0.value=timetable?.subject
         }
+            <<< TextRow(){
+                $0.title="教師名"
+                $0.tag=SubjectInfoType.Teacher.rawValue
+                $0.placeholder = "teacher's name"
+                $0.value=timetable?.teacher
+        }
+            <<< TextRow(){
+                $0.title="場所"
+                $0.tag=SubjectInfoType.Place.rawValue
+                $0.placeholder="place's name"
+                $0.value=timetable?.place
+        }
+        
         cancelButton.rx.tap
             .subscribe(onNext:{
                 [weak self] _ in
@@ -61,7 +82,25 @@ class DetailTimetableViewController: UITableViewController {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        
+        form.values().forEach{
+            (key,value) in
+            switch key {
+                case SubjectInfoType.Teacher.rawValue:
+                    if let teacher=value as? String{
+                        timetable?.teacher=teacher
+                }
+                case SubjectInfoType.Subject.rawValue:
+                    if let subject=value as? String{
+                        timetable?.subject=subject
+                }
+                case SubjectInfoType.Place.rawValue:
+                    if let place = value as? String{
+                        timetable?.place=place
+                }
+            default:
+                print("unknown form row \(key)")
+            }
+        }
         print(timetable ?? Timetable())
     }
  
