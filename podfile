@@ -8,6 +8,8 @@ pod 'RealmSwift'
 #pod 'ReSwift'
 pod 'RxSwift', '~> 3.0.0.beta.1'
 pod 'RxCocoa', '~> 3.0.0.beta.1'
+pod 'Eureka'
+
   # Pods for timetable
   target 'timetableTests' do
     inherit! :search_paths
