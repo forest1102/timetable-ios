@@ -12,7 +12,7 @@ import RxCocoa
 import Eureka
 import  os.log
 class DetailTimetableViewController: FormViewController {
-    var timetable:Timetable?
+    var timetable:TimetableEntity?
     
     private enum SubjectInfoType:String{
         case Subject,Teacher,Place
@@ -59,11 +59,11 @@ class DetailTimetableViewController: FormViewController {
         
         cancelButton.rx.tap
             .subscribe(onNext:{
-                [weak self] _ in
-                if (self?.presentingViewController is UINavigationController){
-                    self?.dismiss(animated: true, completion: nil)
+                [unowned self] _ in
+                if (self.presentingViewController is UINavigationController){
+                    self.dismiss(animated: true, completion: nil)
                 }
-                else if let owningNavigationController = self?.navigationController{
+                else if let owningNavigationController = self.navigationController{
                     owningNavigationController.popViewController(animated: true)
                 }
                 else {
@@ -101,7 +101,7 @@ class DetailTimetableViewController: FormViewController {
                 print("unknown form row \(key)")
             }
         }
-        print(timetable ?? Timetable())
+        
     }
  
 

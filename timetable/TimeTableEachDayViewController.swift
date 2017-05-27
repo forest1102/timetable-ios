@@ -14,8 +14,8 @@ class TimeTableEachDayViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var dayTabBar: DayTabBar!
     @IBOutlet weak var EachDayTimeTable: UITableView!
-    var timetables=[Timetable]()
-//    var selectedTimetable:Timetable? = nil
+    var timetables=[TimetableEntity]()
+//    var selectedTimetable:TimetableEntity? = nil
     private let disposeBag=DisposeBag()
     
     
@@ -50,7 +50,7 @@ class TimeTableEachDayViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         switch (segue.identifier ?? "") {
         case "ShowDetail":
-//            print(self.selectedTimetable ?? Timetable())
+//            print(self.selectedTimetable ?? TimetableEntity())
             
             guard let secondVC=(segue.destination as? DetailTimetableViewController) else{
                 fatalError("Unexpected destination: \(segue.destination)")
@@ -73,9 +73,15 @@ class TimeTableEachDayViewController: UIViewController {
             if let selectedIndexPath = EachDayTimeTable.indexPathForSelectedRow {
                 // Update an existing meal.
                 WeekOfDay.sharedInstance.curSelectedItem.asObservable()
-                    .subscribe(onNext:{
-                        TimetableData.sharedInstance.wholeTimetablesVariable.value[$0]?[selectedIndexPath.row]=timetable
-                    }).dispose()
+                    .subscribe(
+                        onNext:{
+                            timetable.dayEnum=$0
+                            timetable.hour=Int8(selectedIndexPath.row)
+                            //print(timetable)
+                            TimetableAccessor.sharedInstance.set(data: timetable)
+                        }
+                    )
+                    .dispose()
             }
         }
     }
@@ -96,21 +102,21 @@ class TimeTableEachDayViewController: UIViewController {
             .addDisposableTo(disposeBag)
         TimetableData.sharedInstance.curTimetableDay
             .subscribe(onNext:{
-                [weak self] in
-                self?.timetables=$0
+                [unowned self] in
+                self.timetables=$0
             })
             .addDisposableTo(disposeBag)
         self.EachDayTimeTable.rx.itemSelected.subscribe(onNext:{
-            [weak self] index in
-            self?.performSegue(withIdentifier: "ShowDetail", sender: index)
-        })
+            [unowned self] index in
+            self.performSegue(withIdentifier: "ShowDetail", sender: index)
+        },onError:nil)
         
     }
     
     private func loadSampleTimetables(){
-        let timetable1:Timetable=Timetable(subject: "Math",teacher:"John",place:"here")
-        let timetable2:Timetable=Timetable(subject: "Physics",teacher:"Moris",place:"there")
-        TimetableData.sharedInstance.wholeTimetablesVariable.value[.Mon]?[0...1]=[timetable1,timetable2]
+        //let timetable1:TimetableEntity=TimetableEntity(subject: "Math",teacher:"John",place:"here")
+        //let timetable2:TimetableEntity=TimetableEntity(subject: "Physics",teacher:"Moris",place:"there")
+        //TimetableAccessor.sharedInstance.wholeTimetablesVariable.value[.Mon]?[0...1]=[timetable1,timetable2]
     }
 
 }

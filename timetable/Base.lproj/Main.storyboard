@@ -47,7 +47,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="VlI-II-86h" kind="presentation" identifier="" id="4JA-FM-ypa"/>
+                        <segue destination="VlI-II-86h" kind="presentation" identifier="presentModal" id="4JA-FM-ypa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -269,6 +269,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Hds-HC-5EH"/>
-        <segue reference="C4E-9l-81s"/>
+        <segue reference="UlR-h6-yoK"/>
     </inferredMetricsTieBreakers>
 </document>
