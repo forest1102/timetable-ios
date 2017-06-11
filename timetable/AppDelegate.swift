@@ -8,7 +8,7 @@
 
 import UIKit
 //import ReSwift
-
+import RxRealm
 //let mainStore=Store(reducer: CombinedReducer([TabBarReducer()]), state: AppState())
 
 @UIApplicationMain

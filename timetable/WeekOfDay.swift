@@ -42,7 +42,7 @@ class WeekOfDay{
             showKindVariable.asObservable() )
         {
             (range:Int,kind:ShowKind) in
-            [String](WeekOfDay.WeekNameList[kind]![0...range])
+            [String](WeekOfDay.WeekNameList[kind]?[0...range] ?? [])
         }
     }
 }
