@@ -7,12 +7,16 @@ PODS:
     - Realm (= 2.7.0)
   - RxCocoa (3.0.1):
     - RxSwift (~> 3.0)
+  - RxRealm (0.4.0):
+    - RealmSwift (~> 2.0)
+    - RxSwift (~> 3.0.0)
   - RxSwift (3.0.1)
 
 DEPENDENCIES:
   - Eureka
   - RealmSwift
   - RxCocoa (~> 3.0.0.beta.1)
+  - RxRealm
   - RxSwift (~> 3.0.0.beta.1)
 
 SPEC CHECKSUMS:
@@ -20,8 +24,9 @@ SPEC CHECKSUMS:
   Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
   RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
   RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
+  RxRealm: 6c1052b72118ed6929115801c38f90f0c962f2cf
   RxSwift: af5680055c4ad04480189c52d28385b1029493a6
 
-PODFILE CHECKSUM: 00ccc3298898fb2f3097aa477df9b8213b704a3b
+PODFILE CHECKSUM: c16b9d131952fef0d0390f5065234c89df55fbc1
 
 COCOAPODS: 1.2.0

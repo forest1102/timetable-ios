@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import ReSwift
 import RxSwift
 import RxCocoa
 import os.log
@@ -59,22 +58,22 @@ class DayTabBar: UITabBar {
         WeekOfDay.sharedInstance.WeekListObservable
             .subscribe(
                 onNext:{
-                [weak self] weekList in
-                self!.items=[]
+                [unowned self] weekList in
+                self.items=[]
                 for (i,weekName) in weekList.enumerated(){
-                    self!.items!.append(UITabBarItem(title: weekName, image: nil, tag: i))
+                    self.items!.append(UITabBarItem(title: weekName, image: nil, tag: i))
                     }
-                    self!.focusView.frame=CGRect(x:0.0, y:0.0,
-                                                 width:self!.bounds.width/CGFloat(weekList.count),
-                                                 height: self!.bounds.height)
+                    self.focusView.frame=CGRect(x:0.0, y:0.0,
+                                                 width:self.bounds.width/CGFloat(weekList.count),
+                                                 height: self.bounds.height)
             },
                 onError:{print($0)})
             .addDisposableTo(disposeBag)
         
         self.rx.didSelectItem
-            .map{WeekOfDay.Week(rawValue:$0.tag)!}
+            .map{Week(rawValue:$0.tag)!}
             .subscribe(onNext:{
-                cur in
+                [unowned self] cur in
                 self.focusView.text=""
                 UIView.animate(withDuration: 0.1,delay:0.0,options:.curveEaseOut, animations: {
                     self.focusView.center.x=self.focusView.bounds.width*(0.5+CGFloat(cur.rawValue))
