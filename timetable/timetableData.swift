@@ -12,7 +12,7 @@ import RxCocoa
 
 class TimetableData {
     static let sharedInstance=TimetableData()
-    //let TimetableAccessor.sharedInstance.wholeTimetablesVariable=Variable<[Week:[TimetableEntity]]>([:])
+    //let TimetableAccessor.sharedInstance.wholeTimetablesVariable=Variable<[WeekOfDay.Week:[TimetableEntity]]>([:])
     var curTimetableDay:Observable<[TimetableEntity]>!
     init(){
         self.setup()

@@ -10,6 +10,8 @@
 		3E6F8D2267684AED920B0F5B /* Pods_timetable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08774DE77FE4DFD049A79C6 /* Pods_timetable.framework */; };
 		7A016C5A1ECC7D2E000CD2BD /* TimetableEntitiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A016C591ECC7D2E000CD2BD /* TimetableEntitiy.swift */; };
 		7A016C5C1ECC825D000CD2BD /* TimetableAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A016C5B1ECC825D000CD2BD /* TimetableAccessor.swift */; };
+		7A24235A1EEBCD2A00082657 /* SchoolTaskEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2423591EEBCD2A00082657 /* SchoolTaskEntity.swift */; };
+		7A24235C1EED3B4600082657 /* SchoolTaskAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A24235B1EED3B4600082657 /* SchoolTaskAccessor.swift */; };
 		7A367CB51EA1051F00C84742 /* DayTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A367CB41EA1051F00C84742 /* DayTabBar.swift */; };
 		7A5F7B6F1EB6095800833C01 /* EachDayRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5F7B6E1EB6095800833C01 /* EachDayRange.swift */; };
 		7A5F7B711EB6258100833C01 /* DetailTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5F7B701EB6258100833C01 /* DetailTimetableViewController.swift */; };
@@ -55,6 +57,8 @@
 		73A88E9CC88C1BE3F0E42701 /* Pods-timetable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timetable.release.xcconfig"; path = "Pods/Target Support Files/Pods-timetable/Pods-timetable.release.xcconfig"; sourceTree = "<group>"; };
 		7A016C591ECC7D2E000CD2BD /* TimetableEntitiy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableEntitiy.swift; sourceTree = "<group>"; };
 		7A016C5B1ECC825D000CD2BD /* TimetableAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableAccessor.swift; sourceTree = "<group>"; };
+		7A2423591EEBCD2A00082657 /* SchoolTaskEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTaskEntity.swift; sourceTree = "<group>"; };
+		7A24235B1EED3B4600082657 /* SchoolTaskAccessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTaskAccessor.swift; sourceTree = "<group>"; };
 		7A367CB41EA1051F00C84742 /* DayTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTabBar.swift; sourceTree = "<group>"; };
 		7A5F7B6E1EB6095800833C01 /* EachDayRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EachDayRange.swift; sourceTree = "<group>"; };
 		7A5F7B701EB6258100833C01 /* DetailTimetableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DetailTimetableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -190,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				7A016C591ECC7D2E000CD2BD /* TimetableEntitiy.swift */,
+				7A2423591EEBCD2A00082657 /* SchoolTaskEntity.swift */,
+				7A24235B1EED3B4600082657 /* SchoolTaskAccessor.swift */,
 				7A016C5B1ECC825D000CD2BD /* TimetableAccessor.swift */,
 				7AC87AD11EA4C6E700A5B3C9 /* WeekOfDay.swift */,
 				7AC87ACE1EA4C4FC00A5B3C9 /* timetableData.swift */,
@@ -503,10 +509,12 @@
 				7AC87ACF1EA4C4FC00A5B3C9 /* timetableData.swift in Sources */,
 				7AC87AD21EA4C6E700A5B3C9 /* WeekOfDay.swift in Sources */,
 				7A5F7B6F1EB6095800833C01 /* EachDayRange.swift in Sources */,
+				7A24235A1EEBCD2A00082657 /* SchoolTaskEntity.swift in Sources */,
 				7AC87AD81EA8DCA600A5B3C9 /* TabBarSetting.swift in Sources */,
 				7AA84E5C1E9B91B30025499E /* TimeTableEachDayViewController.swift in Sources */,
 				7AC182801E9293570085E7CF /* AppDelegate.swift in Sources */,
 				7AC87AD41EA7924300A5B3C9 /* UIColorHexExtension.swift in Sources */,
+				7A24235C1EED3B4600082657 /* SchoolTaskAccessor.swift in Sources */,
 				7A367CB51EA1051F00C84742 /* DayTabBar.swift in Sources */,
 				7A5F7B731EC3369A00833C01 /* SettingFormViewController.swift in Sources */,
 			);

@@ -41,6 +41,7 @@ enum Week:Int {
 
 
 class TimetableEntity:Object {
+    
     // MARK: Properties
     var dayEnum:Week{
         get{
@@ -51,11 +52,15 @@ class TimetableEntity:Object {
         }
     }
     
-    dynamic private var day:String = ""
     dynamic var hour:Int8=0
     dynamic var subject: String=""
     dynamic var teacher:String=""
     dynamic var place: String=""
+    let taskList=LinkingObjects(fromType: SchoolTaskEntity.self, property: "timetableInfo")
+
+    // MARK: Private Properties
+    dynamic private var day:String = Week.Mon.toString
+    dynamic private var id=""
     
     required convenience init(dayEnum:Week,hour:Int8,subject: String,teacher:String,place: String) {
         self.init()
@@ -64,8 +69,15 @@ class TimetableEntity:Object {
         self.subject=subject
         self.teacher=teacher
         self.place=place
+        self.idSet()
     }
     
+    func idSet(){
+        self.id=self.day+"\(self.hour)"
+    }
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
 }

@@ -82,24 +82,29 @@ class DetailTimetableViewController: FormViewController {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        form.values().forEach{
-            (key,value) in
-            switch key {
-                case SubjectInfoType.Teacher.rawValue:
-                    if let teacher=value as? String{
-                        timetable?.teacher=teacher
+        let data=TimetableEntity()
+        data.dayEnum=timetable?.dayEnum ?? .Mon
+        data.hour=timetable?.hour ?? 0
+        timetable = form.values().reduce(data){
+            (result,cur) in
+            switch cur.key {
+            case SubjectInfoType.Teacher.rawValue:
+                if let teacher=cur.value as? String{
+                    result.teacher=teacher
                 }
-                case SubjectInfoType.Subject.rawValue:
-                    if let subject=value as? String{
-                        timetable?.subject=subject
+            case SubjectInfoType.Subject.rawValue:
+                if let subject=cur.value as? String{
+                    result.subject=subject
                 }
-                case SubjectInfoType.Place.rawValue:
-                    if let place = value as? String{
-                        timetable?.place=place
+            case SubjectInfoType.Place.rawValue:
+                if let place = cur.value as? String{
+                    result.place=place
                 }
             default:
-                print("unknown form row \(key)")
+                print("unknown form row \(cur.key)")
             }
+            // print(timetable)
+            return result
         }
         
     }

@@ -70,19 +70,10 @@ class TimeTableEachDayViewController: UIViewController {
         if let sourceViewController = segue.source as? DetailTimetableViewController,
             let timetable = sourceViewController.timetable {
             
-            if let selectedIndexPath = EachDayTimeTable.indexPathForSelectedRow {
-                // Update an existing meal.
-                WeekOfDay.sharedInstance.curSelectedItem.asObservable()
-                    .subscribe(
-                        onNext:{
-                            timetable.dayEnum=$0
-                            timetable.hour=Int8(selectedIndexPath.row)
-                            //print(timetable)
-                            TimetableAccessor.sharedInstance.set(data: timetable)
-                        }
-                    )
-                    .dispose()
-            }
+            TimetableAccessor.sharedInstance.set(data: timetable)
+                .subscribe{
+                    print($0)
+            }.dispose()
         }
     }
  
@@ -110,6 +101,7 @@ class TimeTableEachDayViewController: UIViewController {
             [unowned self] index in
             self.performSegue(withIdentifier: "ShowDetail", sender: index)
         },onError:nil)
+        .addDisposableTo(disposeBag)
         
     }
     
